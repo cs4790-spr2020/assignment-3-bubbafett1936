@@ -18,6 +18,7 @@
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+*.code-workspace
 
 ### VisualStudioCode Patch ###
 # Ignore all local history of files
@@ -374,3 +375,6 @@ healthchecksdb
 MigrationBackup/
 
 # End of https://www.gitignore.io/api/dotnetcore,visualstudio,visualstudiocode
+
+# BlabberApp dotnet setup scripts
+blabber_*
