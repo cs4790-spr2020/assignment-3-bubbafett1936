@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using BlabberApp.Domain.Entities;
 
 namespace BlabberApp.Domain.Interfaces {
@@ -9,6 +10,6 @@ namespace BlabberApp.Domain.Interfaces {
         void Update(T entity);
         IEnumerable<T> GetAll();
         T GetBySysID(string sysId);
-        T GetByUserID(string userId);
+        Dictionary<string,T> GetByUserID(string userId);
     }
 }

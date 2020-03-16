@@ -7,20 +7,19 @@ namespace BlabberApp.Domain.Entities {
         public DateTime LastLoginDTTM { get; set; }
         public string Email {
             get { return _email; }
-            private set { _email = value; }
-        }
 
-        public void ChangeEmail(string email) {
-            if (string.IsNullOrWhiteSpace(email) || email.Length > 50)
-                throw new FormatException("Email is invalid");
+            set {
+                if (string.IsNullOrWhiteSpace(value) || value.Length > 50)
+                    throw new FormatException("Email is invalid");
 
-            try {
-                MailAddress m = new MailAddress(email); 
+                try {
+                    MailAddress m = new MailAddress(value); 
+                }
+                catch (FormatException) {
+                    throw new FormatException("Email is invalid");
+                }
+                _email = value;
             }
-            catch (FormatException) {
-                throw new FormatException("Email is invalid");
-            }
-            Email = email;
         }
     }
 }

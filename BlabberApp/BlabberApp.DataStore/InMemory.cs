@@ -44,20 +44,24 @@ namespace BlabberApp.DataStore
             return _entities.AsEnumerable();
         }
 
-        public T GetBySysID(string sysId)
-        {
+        public T GetBySysID(string sysId) {
             if (sysId.Equals("") )
                 throw new ArgumentNullException("sysID");
 
-            return _entities.SingleOrDefault(s => s.getSysID() == sysId);
+            return _entities.Where(e => e.SysID == sysId).FirstOrDefault();
         }
 
-        public T GetByUserID(string userId)
-        {
+        public Dictionary<string,T> GetByUserID(string userId) {
             if (userId.Equals("") )
                 throw new ArgumentNullException("userID");
 
-            return _entities.Find(userId);
+            Dictionary<string, T> dict = _entities.ToDictionary(e => e.SysID);
+            Dictionary<string, T> result = new Dictionary<string, T>();
+            foreach (KeyValuePair<string, T> kvp in dict) {
+                if (kvp.Value.User == userId) result.Add(kvp.Key, kvp.Value);
+            }
+
+            return result;
         }
     }
 }

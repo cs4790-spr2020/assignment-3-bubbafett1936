@@ -7,7 +7,8 @@ namespace BlabberApp.DataStore.Entities
    {
        public UserMap(EntityTypeBuilder<User> entityBuilder)
        {
-           entityBuilder.HasKey(t => t.Email);
+           entityBuilder.HasKey(t => t.SysID);
+           entityBuilder.Property(t => t.Email);
            entityBuilder.Property(t => t.RegisterDTTM).IsRequired();
            entityBuilder.Property(t => t.LastLoginDTTM).IsRequired();
        }

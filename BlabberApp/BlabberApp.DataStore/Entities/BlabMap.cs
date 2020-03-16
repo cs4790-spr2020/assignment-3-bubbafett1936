@@ -7,7 +7,8 @@ namespace BlabberApp.DataStore.Entities
    {
        public BlabMap(EntityTypeBuilder<Blab> entityBuilder)
        {
-           entityBuilder.HasKey(t => t.UserID);
+           entityBuilder.HasKey(t => t.SysID);
+           entityBuilder.Property(t => t.UserID);
            entityBuilder.Property(t => t.Message);
        }
    } 
